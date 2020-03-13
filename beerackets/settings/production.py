@@ -7,6 +7,8 @@ ALLOWED_HOSTS = [
 DEBUG = False
 
 
+SECURE_SSL_REDIRECT = True
+
 # Database
 DATABASES = {
     'default': {
@@ -23,3 +25,4 @@ DATABASES = {
 
 STATIC_ROOT = '/home/ianfitzpatrick/apps/beerackets_static'
 MEDIA_ROOT = '/home/ianfitzpatrick/apps/beerackets_media'
+STATICFILES_DIRS = '/home/ianfitzpatrick/apps/beerackets_static'
