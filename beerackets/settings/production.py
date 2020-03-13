@@ -21,5 +21,5 @@ DATABASES = {
     }
 }
 
-STATIC_ROOT = '/home/ianfitzpatrick/beerackets_static'
-MEDIA_ROOT = '/home/ianfitzpatrick/beerackets_media'
+STATIC_ROOT = '/home/ianfitzpatrick/apps/beerackets_static'
+MEDIA_ROOT = '/home/ianfitzpatrick/apps/beerackets_media'
