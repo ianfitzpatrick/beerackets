@@ -49,7 +49,11 @@ INSTALLED_APPS = [
     'teams',
     'matches',
     'ladders',
-    'django_extensions'
+    'django_extensions',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.discord'
 ]
 
 MIDDLEWARE = [
@@ -99,6 +103,13 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+LOGIN_REDIRECT_URL = 'home'
+
 # Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
@@ -110,16 +121,3 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-
-
-# DJango Wiki Settings
-WIKI_MARKDOWN_HTML_STYLES = [
-    'width', 'height', 'size', 'padding', 'margin', 'border', 'float',
-    'display', 'max-width', 'min-width'
-]
-
-WIKI_MARKDOWN_HTML_WHITELIST = ['iframe']
-
-WIKI_MARKDOWN_HTML_ATTRIBUTES = {
-    'iframe': ['width', 'height', 'src']
-}
