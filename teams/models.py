@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.apps import apps
 from django.db import models
 from django.db.models import Q
@@ -43,10 +44,9 @@ class Team(models.Model):
 
     @property
     def open_match(self):
-        if self.matches.count():
-            return self.matches[0]
-
-        return None
+        max_match_date = (
+            datetime.now().today() - self.league.ladder.result_deadline)
+        return self.matches.filter(created__gte=max_match_date).first()
 
 
 class Member(models.Model):
