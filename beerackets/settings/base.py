@@ -45,6 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.sites.apps.SitesConfig',
     'django.contrib.humanize.apps.HumanizeConfig',
     'beerackets',
+    'leagues',
+    'teams',
+    'matches',
+    'ladders',
     'django_extensions'
 ]
 
