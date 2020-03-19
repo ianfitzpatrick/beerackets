@@ -4,6 +4,12 @@ import os
 from django.core.exceptions import ImproperlyConfigured
 
 
+cwd = os.path.dirname(os.path.realpath(__file__))
+PROJECT_DIR = str(Path(cwd).parent)
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__)))
+TEMPLATE_DIR = str(Path(BASE_DIR).parents[1]) + '/templates'
+
+
 def get_secret(secret_name):
     """
     Get secret variable or return explicit exception.
@@ -14,9 +20,7 @@ def get_secret(secret_name):
     settings files, or risk circular imports.
     """
     # Secrets file location
-    cwd = os.path.dirname(os.path.realpath(__file__))
-    project_dir = str(Path(cwd).parent)
-    secrets_file = f'{project_dir}/settings/secrets.json'
+    secrets_file = f'{PROJECT_DIR}/settings/secrets.json'
 
     with open(secrets_file) as f:
         secrets_file = json.loads(f.read())
@@ -26,10 +30,6 @@ def get_secret(secret_name):
     except KeyError:
         error_msg = 'Missing secrets file.'
         raise Exception(error_msg)
-
-
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname( __file__ )))
-TEMPLATE_DIR = str(Path(BASE_DIR).parents[1]) + '/templates'
 
 SECRET_KEY = get_secret('SECRET_KEY')
 ALLOWED_HOSTS = []
@@ -121,3 +121,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+
+STATICFILES_DIRS = [
+    f'{str(Path(cwd).parent.parent)}/assets'
+]

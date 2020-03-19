@@ -1,0 +1,108 @@
+/* DOCUMENT LEVEL SETTINGS */
+html {
+    background-color: $color-bg;
+}
+
+body {
+    /* Page Spacing & Alignment*/
+    display: inline;
+    margin: 0px 0 50px 0;
+    width: 100%;
+
+    /* Font Settings */
+    color: $color-primary;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    text-align: center;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* BUTTONS: Full Width */
+.btn {
+
+    background: transparent;
+    border: 1px solid $color-secondary;
+    border-radius: 10px;
+    color: $color-secondary;
+    font-size: 18px;
+    margin-top: 20px;
+    padding: 12px;
+    width: 85%;
+
+    &.btn-primary {
+        background-color: $color-primary;
+        border-color: $color-primary;
+        color: #fff;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            background-color: $color-primary-dark;
+        }
+    }
+}
+
+/* BUTTONS: Inline */
+.btn-inline {
+    background-color: transparent;  
+    border-radius: 10px;
+    border: 1px solid $color-secondary;
+    color: $color-primary;
+    display: inline-block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    margin-right: 5px;  
+    min-width: 35px;
+    padding: 8px;
+    text-decoration: none;
+    text-transform: capitalize;
+
+    &:active {
+        background-color: $color-primary;
+        color: $color-bg;
+        outline: none;
+    }
+
+    &:focus {
+        outline: none;
+        border: 1px solid $color-primary;
+    }
+}
+
+/* TYPOGRAPHY */
+h1, h2, h3 {
+    font-size: 24px;
+    color: $color-secondary;
+}
+
+p {
+    color: $color-secondary;
+}
+
+a {
+    user-select: none;
+    color: $color-primary;
+}
+
+:focus {
+    outline: 2px solid #90a2b3;
+}
+
+
+/* UTILITY CLASSES */
+.disable {
+    opacity: .4;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* LAYOUT: Main Content Frame */
+.content {
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 525px;
+    margin-left: auto;
+    margin-right: auto;    
+}

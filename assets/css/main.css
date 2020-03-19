@@ -1,0 +1,85 @@
+/* DOCUMENT LEVEL SETTINGS */
+html {
+  background-color: #36393f; }
+
+body {
+  /* Page Spacing & Alignment*/
+  display: inline;
+  margin: 0px 0 50px 0;
+  width: 100%;
+  /* Font Settings */
+  color: #bb72da;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  text-align: center;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased; }
+
+/* BUTTONS: Full Width */
+.btn {
+  background: transparent;
+  border: 1px solid #b9bbbe;
+  border-radius: 10px;
+  color: #b9bbbe;
+  font-size: 18px;
+  margin-top: 20px;
+  padding: 12px;
+  width: 85%; }
+  .btn.btn-primary {
+    background-color: #bb72da;
+    border-color: #bb72da;
+    color: #fff; }
+    .btn.btn-primary:focus {
+      outline: none; }
+    .btn.btn-primary:active {
+      background-color: #202e3c; }
+
+/* BUTTONS: Inline */
+.btn-inline {
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid #b9bbbe;
+  color: #bb72da;
+  display: inline-block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  min-width: 35px;
+  padding: 8px;
+  text-decoration: none;
+  text-transform: capitalize; }
+  .btn-inline:active {
+    background-color: #bb72da;
+    color: #36393f;
+    outline: none; }
+  .btn-inline:focus {
+    outline: none;
+    border: 1px solid #bb72da; }
+
+/* TYPOGRAPHY */
+h1, h2, h3 {
+  font-size: 24px;
+  color: #b9bbbe; }
+
+p {
+  color: #b9bbbe; }
+
+a {
+  user-select: none;
+  color: #bb72da; }
+
+:focus {
+  outline: 2px solid #90a2b3; }
+
+/* UTILITY CLASSES */
+.disable {
+  opacity: .4;
+  pointer-events: none;
+  user-select: none; }
+
+/* LAYOUT: Main Content Frame */
+.content {
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 525px;
+  margin-left: auto;
+  margin-right: auto; }
