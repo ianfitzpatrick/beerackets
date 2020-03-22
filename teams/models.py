@@ -22,6 +22,8 @@ class Team(models.Model):
     modified = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
+    ladder_rank = models.PositiveSmallIntegerField(default=9999)
+
     def __str__(self):
         return f'{self.name} (captained by {self.captain.get_full_name()})'
 
