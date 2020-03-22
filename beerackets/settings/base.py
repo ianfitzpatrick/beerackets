@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.discord'
+    'allauth.socialaccount.providers.discord',
+    'notifications'
 ]
 
 MIDDLEWARE = [
