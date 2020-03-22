@@ -1,4 +1,7 @@
-from django.views.generic import TemplateView
+from django.views.generic import ListView
+from leagues.models import League
 
-class Home(TemplateView):
+class Home(ListView):
+    queryset = League.objects.all()
     template_name = 'home.html'
+    context_object_name = 'league_list'

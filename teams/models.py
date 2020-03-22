@@ -37,7 +37,7 @@ class Team(models.Model):
 
     @property
     def losses_from_forfeit(self):
-        return self.lost_matches.filter(was_forfeit=True).count()
+        return self.lost_matches.filter(forfeit_team__id=self.id).count()
 
     @property
     def matches(self):
@@ -50,6 +50,8 @@ class Team(models.Model):
             datetime.now().today() - self.league.ladder.result_deadline)
         return self.matches.filter(created__gte=max_match_date).first()
 
+    class Meta:
+        ordering = ['ladder_rank']
 
 class Member(models.Model):
     modified = models.DateTimeField(auto_now=True)
