@@ -25,6 +25,5 @@ DATABASES = {
     }
 }
 
-STATIC_ROOT = '/home/ianfitzpatrick/apps/beerackets_static'
 MEDIA_ROOT = '/home/ianfitzpatrick/apps/beerackets_media'
 STATICFILES_DIRS = ['/home/ianfitzpatrick/apps/beerackets_static']
