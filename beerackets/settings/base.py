@@ -124,5 +124,5 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
-    [f'{str(Path(cwd).parent.parent)}/assets']
+    f'{str(Path(cwd).parent.parent)}/assets'
 ]
