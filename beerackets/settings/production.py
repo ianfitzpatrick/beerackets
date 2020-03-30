@@ -1,10 +1,12 @@
 from .base import *  # noqa: F403
-
+DEBUG = True
 ALLOWED_HOSTS = [
     'winston.kqbdiscord.com'
 ]
 
-DEBUG = False
+DEBUG = True
+
+SITE_ID = 2
 
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'http')
