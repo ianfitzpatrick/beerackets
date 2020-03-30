@@ -10,6 +10,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'http')
 
 SECURE_SSL_REDIRECT = True
 
+USE_X_FORWARDED_HOST = True
+
 # Database
 DATABASES = {
     'default': {
