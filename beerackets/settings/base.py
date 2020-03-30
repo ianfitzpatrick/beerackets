@@ -110,6 +110,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 LOGIN_REDIRECT_URL = 'home'
+ACCOUNT_EMAIL_VERIFICATION = None
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
