@@ -1,7 +1,7 @@
 from .base import *  # noqa: F403
 
 ALLOWED_HOSTS = [
-    'beerackets.kqbdiscord.com'
+    'winston.kqbdiscord.com'
 ]
 
 DEBUG = False
