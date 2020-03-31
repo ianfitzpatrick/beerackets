@@ -72,4 +72,3 @@ class LadderRanking(models.Model):
     position = models.PositiveSmallIntegerField(default=9999)
     team = models.OneToOneField(
         Team, related_name='ladder_ranking', on_delete=models.CASCADE)
-    ladder = models.ForeignKey(Ladder, on_delete=models.CASCADE)

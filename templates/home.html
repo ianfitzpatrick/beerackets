@@ -16,15 +16,18 @@
     {% for league in league_list %}
     <table>
         <h2>{{ league }}</h2>
-        <tr>
-            <th>rank</th>
-            <th>team</th>
-        </tr>
-        {% for team in league.teams.all %}
-        <tr>
-            <td><strong>#{{ team.ladder_ranking.position }}</strong></td>
-            <td>{{ team.name }} </td>
-        {% endfor %}
+        {% if league.ladder %}
+        <h4>Ladder Rankings</h4>
+            <tr>
+                <th>rank</th>
+                <th>team</th>
+            </tr>
+            {% for team in league.teams.all %}
+            <tr>
+                <td><strong>#{{ team.ladder_ranking.position }}</strong></td>
+                <td>{{ team.name }} </td>
+            {% endfor %}
+        {% endif %}
     </table>
     {% endfor %}
 
