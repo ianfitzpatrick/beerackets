@@ -30,31 +30,7 @@ class Match(models.Model):
         return f'{self.challenger.name} vs {self.defender.name}'
 
     def end_match(self, winner):
-        """
-        Set Winner and Loser for match. Update Team Ladder Ranks accordingly.
-
-        Sets winner and loser for a match, and updates ladder ranks, according
-        to the following rules:
-
-            - Rank has NOT already been applied based on the result of match
-
-            - If `winner` argument is specified, assigned winner and loser
-              accordingly.
-
-            - If no `forfeit` team argument is specified, assign that team
-              as loser and other team as winner
-
-            - If neither argument supplied, mark challenger as winner and
-              defender as forfeit.
-
-        Rank logic is applied as follows:
-
-            - If the CHALLENGER wins, the challenger and defender team's
-              ladder ranks are swapped.
-
-            - If the DEFENDER wins, all team ranks remain the same.
-        """
-        # Set winner and loser depending on which arguments were passed
+        """Set Winner and Loser for match, then save match object."""
         teams = Team.objects.filter(
             pk__in=[self.challenger.id, self.defender.id])
 
