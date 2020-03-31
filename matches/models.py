@@ -5,10 +5,11 @@ from teams.models import Team
 
 class Match(models.Model):
 
-    challenger = models.ForeignKey(
-        Team, related_name='challenger_matches', on_delete=models.CASCADE)
     defender = models.ForeignKey(
         Team, related_name='defender_matches', on_delete=models.CASCADE)
+
+    challenger = models.ForeignKey(
+        Team, related_name='challenger_matches', on_delete=models.CASCADE)
 
     winner = models.ForeignKey(
         Team, related_name='won_matches', on_delete=models.CASCADE, blank=True,
@@ -51,7 +52,7 @@ class Match(models.Model):
 
 class LadderMatch(Match):
 
-    rank_applied = models.BooleanField(default=False)
+    ranking_applied = models.BooleanField(default=False)
     scheduled = models.DateTimeField(blank=True, null=True)
 
     def end_match(self, winner=None, forfeit_team=None):
@@ -96,14 +97,17 @@ class LadderMatch(Match):
             self.forfeit_team = forfeit_team
             winner = teams.exclude(id=forfeit_team.id).get()
 
-        if not self.rank_applied:
+        if not self.ranking_applied:
             # Now apply rank according to winner and loser
             if winner == self.challenger:
-                challenger_old_rank = self.challenger.ladder_rank
-                defender_old_rank = self.defender.ladder_rank
+                challenger_old_rank = self.challenger.ladder_ranking.position
+                defender_old_rank = self.defender.ladder_ranking.position
 
-                self.challenger.ladder_rank = defender_old_rank
-                self.defender.ladder_rank = challenger_old_rank
+                self.challenger.ladder_ranking.position = defender_old_rank
+                self.challenger.ladder_ranking.save()
+
+                self.defender.ladder_ranking.position = challenger_old_rank
+                self.defender.ladder_ranking.save()
 
                 self.challenger.save()
                 self.defender.save()
@@ -112,6 +116,6 @@ class LadderMatch(Match):
                 # If the defender wins, no rank changes occur
                 pass
 
-            self.rank_applied = True
+            self.ranking_applied = True
 
         super().end_match(winner)

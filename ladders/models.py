@@ -2,6 +2,8 @@ from datetime import timedelta
 from django.db import models
 from leagues.models import League
 from matches.models import Match
+from teams.models import Team
+
 
 class Ladder(models.Model):
     league = models.OneToOneField(League, on_delete=models.CASCADE)
@@ -31,14 +33,14 @@ class Ladder(models.Model):
         Match challenge criteria are as following:
 
             - Neither team has an OPEN match challenge pending
-            
+
             - Both teams are within ONE rank of each other OR
               Both teams have SAME rank
-            
+
             - Both teams are in the same LEAGUE
 
             - Both teams are not the SAME team
-        """        
+        """
         # Start with most conservative assumptions
         open_matches = same_team_twice = True
         same_league = teams_within_one_rank = teams_have_same_rank = False
@@ -52,12 +54,11 @@ class Ladder(models.Model):
         if challenger.league == defender.league:
             same_league = True
 
-        if defender.ladder_rank - challenger.ladder_rank == 1:
+        if defender.ladder_ranking.position - challenger.ladder_ranking.position == 1:
             teams_within_one_rank = True
 
-        if defender.ladder_rank == challenger.ladder_rank:
+        if defender.ladder_ranking.position == challenger.ladder_ranking.position:
             teams_have_same_rank = True
-
 
         if not open_matches and not same_team_twice:
             if same_league:
@@ -66,3 +67,9 @@ class Ladder(models.Model):
 
         return False
 
+
+class LadderRanking(models.Model):
+    position = models.PositiveSmallIntegerField(default=9999)
+    team = models.OneToOneField(
+        Team, related_name='ladder_ranking', on_delete=models.CASCADE)
+    ladder = models.ForeignKey(Ladder, on_delete=models.CASCADE)

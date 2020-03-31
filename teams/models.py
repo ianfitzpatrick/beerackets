@@ -22,8 +22,6 @@ class Team(models.Model):
     modified = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
-    ladder_rank = models.PositiveSmallIntegerField(default=9999)
-
     def __str__(self):
         return f'{self.name} (captained by {self.captain.get_full_name()})'
 
@@ -47,7 +45,8 @@ class Team(models.Model):
         return self.matches.filter(created__gte=max_match_date).first()
 
     class Meta:
-        ordering = ['ladder_rank']
+        ordering = ['ladder_ranking__position']
+
 
 class Member(models.Model):
     modified = models.DateTimeField(auto_now=True)

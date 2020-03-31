@@ -22,7 +22,7 @@
         </tr>
         {% for team in league.teams.all %}
         <tr>
-            <td><strong>#{{ team.ladder_rank }}</strong></td>
+            <td><strong>#{{ team.ladder_ranking.position }}</strong></td>
             <td>{{ team.name }} </td>
         {% endfor %}
     </table>
