@@ -36,10 +36,6 @@ class Team(models.Model):
         return self.lost_matches.count()
 
     @property
-    def losses_from_forfeit(self):
-        return self.lost_matches.filter(forfeit_team__id=self.id).count()
-
-    @property
     def matches(self):
         Match = apps.get_model(app_label='matches', model_name='Match')
         return Match.objects.filter(Q(challenger=self) | Q(defender=self))
